@@ -1,8 +1,11 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
+const demoEmail = process.env.DEMO_USER_EMAIL || "demo@iprogramai.com"
+const demoPassword = process.env.DEMO_USER_PASSWORD || "demo123"
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  secret: process.env.AUTH_SECRET || "development-secret-change-in-production",
+  secret: process.env.AUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -11,10 +14,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        if (credentials?.email === "demo@iprogramai.com" && credentials?.password === "demo123") {
+        if (credentials?.email === demoEmail && credentials?.password === demoPassword) {
           return {
             id: "1",
-            email: "demo@iprogramai.com",
+            email: demoEmail,
             name: "Demo User",
           }
         }
