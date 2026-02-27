@@ -208,7 +208,7 @@ export default function HomePage() {
               iProgramAI
             </span>
           </div>
-          <p className="text-gray-500 text-sm">© 2024 iProgramAI. All rights reserved.</p>
+          <p className="text-gray-500 text-sm">© {new Date().getFullYear()} iProgramAI. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link href="#" className="hover:text-gray-300 transition-colors">Privacy</Link>
             <Link href="#" className="hover:text-gray-300 transition-colors">Terms</Link>
